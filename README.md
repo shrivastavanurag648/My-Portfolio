@@ -73,7 +73,7 @@ lib/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/lraihan/polymorphism-portfolio.git
+git clone https://github.com/shrivastavanurag648/My-Portfolio.git
 cd polymorphism-portfolio
 ```
 
@@ -211,10 +211,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📞 Contact
 
-- **Email**: lraihan@hackermail.com
-- **LinkedIn**: [Raihan Fadli](https://www.linkedin.com/in/raihan-fadli-dev/)
-- **GitHub**: [@lraihan](https://github.com/lraihan)
-- **Instagram**: [@locio_raihan](https://www.instagram.com/locio_raihan/)
+- **Email**: shrivastavanurag648@gmail.com
+- **LinkedIn**: [Anurag Shrivastav](https://www.linkedin.com/in/anurag-shrivastav-585113387)
+- **GitHub**: [@shrivastavanurag648](https://github.com/shrivastavanurag648)
+- **Instagram**: [@Anurag Shrivastav](https://www.instagram.com/anuragshrivastav_07/)
 
 ---
 

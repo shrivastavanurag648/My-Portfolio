@@ -1,8 +1,13 @@
-name: Build and Deploy Flutter Web to Vercel
+name: Build and Deploy Flutter Web to GitHub Pages
 
 on:
   push:
     branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -19,31 +24,26 @@ jobs:
       - name: Build Flutter Web
         run: |
           flutter build web \
+            --base-href "/My-Portfolio/" \
             --dart-define=EMAILJS_SERVICE_ID=${{ secrets.EMAILJS_SERVICE_ID }} \
             --dart-define=EMAILJS_TEMPLATE_ID=${{ secrets.EMAILJS_TEMPLATE_ID }} \
             --dart-define=EMAILJS_PUBLIC_KEY=${{ secrets.EMAILJS_PUBLIC_KEY }}
 
-      - name: Upload build output
-        uses: actions/upload-artifact@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: web-build
           path: build/web
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Download build output
-        uses: actions/download-artifact@v3
-        with:
-          name: web-build
-          path: build/web
-
-      - name: Deploy to Vercel
-        uses: vercel/vercel-action@v2
-        with:
-          working-directory: build/web
-          token: ${{ secrets.VERCEL_TOKEN }}
-          prod: true
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

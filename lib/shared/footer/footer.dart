@@ -99,7 +99,7 @@ class _FooterState extends State<Footer> {
         ),
       ),
       Text(
-        'shrivastavanurag6480@gmail.com',
+        'shrivastavanurag648@gmail.com',
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
           color: AppColors.textPrimary.withValues(alpha: .7),
         ),

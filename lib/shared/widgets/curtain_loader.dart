@@ -177,9 +177,6 @@ class _CurtainLoaderState extends State<CurtainLoader>
                             fit: BoxFit.contain,
                             // color: AppColors.textPrimary, // REMOVE THIS to see the actual silver/white logo colors
                             errorBuilder: (context, error, stackTrace) {
-                              print(
-                                'Error loading logo: $error',
-                              ); // This helps you debug the path
                               return Container(
                                 height: 80,
                                 width: 273, // (80 * 1025/300)

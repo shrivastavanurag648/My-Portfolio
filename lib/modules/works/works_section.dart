@@ -501,8 +501,10 @@ class _WorksSectionState extends State<WorksSection> {
               ),
               SizedBox(width: screenWidth(context) * .03),
               Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                child: Wrap(
+                  alignment: WrapAlignment.spaceAround,
+                  runSpacing: 16,
+                  spacing: 16,
                   children: [
                     Tilt(
                       child: Image.asset(

@@ -55,7 +55,16 @@ class GlassNavbar extends StatelessWidget {
                 ),
               ),
 
-              Flexible(flex: 2, child: isSmallScreen ? _buildCompactNav(itemSpacing) : _buildFullNav(itemSpacing)),
+              Flexible(
+                flex: 2,
+                child:
+                    isSmallScreen
+                        ? IconButton(
+                          icon: const Icon(Icons.menu, color: AppColors.textPrimary),
+                          onPressed: () => Scaffold.of(context).openEndDrawer(),
+                        )
+                        : _buildFullNav(itemSpacing),
+              ),
             ],
           ),
         ),
@@ -76,19 +85,6 @@ class GlassNavbar extends StatelessWidget {
     ],
   );
 
-  Widget _buildCompactNav(double spacing) => SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        _AnimatedNavItem(text: 'About', index: 1, onTap: onNavigationTap),
-        SizedBox(width: spacing),
-        _AnimatedNavItem(text: 'Works', index: 3, onTap: onNavigationTap),
-        SizedBox(width: spacing),
-        _AnimatedNavItem(text: 'Contact', index: 5, onTap: onNavigationTap),
-      ],
-    ),
-  );
 }
 
 class _AnimatedNavItem extends StatefulWidget {

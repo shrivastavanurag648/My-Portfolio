@@ -122,6 +122,21 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Widget _buildDrawerItem(String title, int index) => ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              color: AppColors.textPrimary,
+              fontWeight: FontWeight.w300,
+            ),
+      ),
+      onTap: () {
+        Navigator.of(context).pop();
+        _scrollToSectionFromNavbar(index);
+      },
+    );
+
   void _scrollToSectionFromNavbar(int index) {
     if (index < 0 || index >= _sectionKeys.length) {
       return;
@@ -142,7 +157,7 @@ class _HomePageState extends State<HomePage> {
         final targetOffset = _scrollController.offset + position.dy; // Larger offset for navbar navigation
 
         _scrollController.animateTo(
-          targetOffset.clamp(0.0, _scrollController.position.maxScrollExtent),
+          targetOffset.clamp(0, _scrollController.position.maxScrollExtent),
           duration: const Duration(milliseconds: 2000),
           curve: Curves.easeInOutCubic,
         );
@@ -172,6 +187,31 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: AppColors.bgDark,
+    endDrawer: Drawer(
+      backgroundColor: AppColors.bgDark.withValues(alpha: 0.95),
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  icon: const Icon(Icons.close, color: AppColors.textPrimary),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ),
+              const SizedBox(height: 40),
+              _buildDrawerItem('About', 1),
+              _buildDrawerItem('Timeline', 2),
+              _buildDrawerItem('Works', 3),
+              _buildDrawerItem('Contact', 5),
+            ],
+          ),
+        ),
+      ),
+    ),
     body: Stack(
       children: [
         SingleChildScrollView(

@@ -1,0 +1,20 @@
+﻿Analyzing polymorphism-main...                                  
+
+warning - 'avoid_returning_null_for_future' was removed in Dart '3.3.0' - analysis_options.yaml:26:5 - removed_lint
+warning - 'invariant_booleans' was removed in Dart '3.0.0' - analysis_options.yaml:35:5 - removed_lint
+warning - 'iterable_contains_unrelated_type' was removed in Dart '3.3.0' - analysis_options.yaml:36:5 - removed_lint
+warning - 'list_remove_unrelated_type' was removed in Dart '3.3.0' - analysis_options.yaml:37:5 - removed_lint
+warning - 'always_require_non_null_named_parameters' was removed in Dart '3.3.0' - analysis_options.yaml:52:5 - removed_lint
+warning - 'avoid_returning_null' was removed in Dart '3.3.0' - analysis_options.yaml:71:5 - removed_lint
+warning - 'prefer_equal_for_default_values' was removed in Dart '3.0.0' - analysis_options.yaml:125:5 - removed_lint
+   info - Unnecessary use of a block function body - lib\modules\home\pages\home_page.dart:125:52 - prefer_expression_function_bodies
+   info - Unnecessary use of a 'double' literal - lib\modules\home\pages\home_page.dart:196:57 - prefer_int_literals
+   info - Unnecessary use of a 'double' literal - lib\modules\home\pages\home_page.dart:196:75 - prefer_int_literals
+   info - Required named parameters should be before optional named parameters - lib\shared\widgets\antigravity_widget.dart:7:19 - always_put_required_named_parameters_first
+   info - Unnecessary type annotation on a local variable - lib\shared\widgets\antigravity_widget.dart:39:11 - omit_local_variable_types
+   info - Unnecessary type annotation on a local variable - lib\shared\widgets\antigravity_widget.dart:51:11 - omit_local_variable_types
+   info - Unnecessary use of a block function body - lib\shared\widgets\antigravity_widget.dart:68:38 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\shared\widgets\antigravity_widget.dart:71:33 - prefer_expression_function_bodies
+warning - The value of the field '_pulseAnimation' isn't used - lib\shared\widgets\asset_loading_screen.dart:13:26 - unused_field
+   info - Don't invoke 'print' in production code - lib\shared\widgets\curtain_loader.dart:180:31 - avoid_print
+

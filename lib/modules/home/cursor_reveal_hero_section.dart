@@ -439,8 +439,10 @@ class _CursorRevealHeroSectionState extends State<CursorRevealHeroSection>
                   SizedBox(
                     width:
                         screenWidth(context) - horizontalPadding(context) * 2,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Wrap(
+                      alignment: WrapAlignment.spaceAround,
+                      spacing: 20,
+                      runSpacing: 20,
                       children: [
                         ScrollReveal(
                           delay: const Duration(milliseconds: 300),

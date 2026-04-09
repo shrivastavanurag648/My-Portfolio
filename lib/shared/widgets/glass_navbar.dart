@@ -31,7 +31,9 @@ class GlassNavbar extends StatelessWidget {
           height: screenHeight(context) * .08,
           width: double.infinity,
           padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-          decoration: BoxDecoration(color: AppColors.bgDark.withValues(alpha: 0.12)),
+          decoration: BoxDecoration(
+            color: AppColors.bgDark.withValues(alpha: 0.12),
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -43,14 +45,25 @@ class GlassNavbar extends StatelessWidget {
                     height: isSmallScreen ? 28 : 32,
                     fit: BoxFit.contain,
                     // Keep the space reserved while the image loads to avoid a "flash" box.
-                    frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                    frameBuilder: (
+                      context,
+                      child,
+                      frame,
+                      wasSynchronouslyLoaded,
+                    ) {
                       if (wasSynchronouslyLoaded || frame != null) {
                         return child;
                       }
-                      return SizedBox(height: isSmallScreen ? 28 : 32, width: 60);
+                      return SizedBox(
+                        height: isSmallScreen ? 28 : 32,
+                        width: 60,
+                      );
                     },
                     errorBuilder:
-                        (context, error, stackTrace) => SizedBox(height: isSmallScreen ? 28 : 32, width: 60),
+                        (context, error, stackTrace) => SizedBox(
+                          height: isSmallScreen ? 28 : 32,
+                          width: 60,
+                        ),
                   ),
                 ),
               ),
@@ -60,7 +73,10 @@ class GlassNavbar extends StatelessWidget {
                 child:
                     isSmallScreen
                         ? IconButton(
-                          icon: const Icon(Icons.menu, color: AppColors.textPrimary),
+                          icon: const Icon(
+                            Icons.menu,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
                           onPressed: () => Scaffold.of(context).openEndDrawer(),
                         )
                         : _buildFullNav(itemSpacing),
@@ -77,14 +93,15 @@ class GlassNavbar extends StatelessWidget {
     children: [
       _AnimatedNavItem(text: 'About', index: 1, onTap: onNavigationTap),
       SizedBox(width: spacing),
-      _AnimatedNavItem(text: 'Timeline', index: 2, onTap: onNavigationTap),
+      _AnimatedNavItem(text: 'Skills', index: 2, onTap: onNavigationTap),
       SizedBox(width: spacing),
-      _AnimatedNavItem(text: 'Works', index: 3, onTap: onNavigationTap),
+      _AnimatedNavItem(text: 'Timeline', index: 3, onTap: onNavigationTap),
       SizedBox(width: spacing),
-      _AnimatedNavItem(text: 'Contact', index: 5, onTap: onNavigationTap),
+      _AnimatedNavItem(text: 'Works', index: 4, onTap: onNavigationTap),
+      SizedBox(width: spacing),
+      _AnimatedNavItem(text: 'Contact', index: 6, onTap: onNavigationTap),
     ],
   );
-
 }
 
 class _AnimatedNavItem extends StatefulWidget {
@@ -98,7 +115,8 @@ class _AnimatedNavItem extends StatefulWidget {
   State<_AnimatedNavItem> createState() => _AnimatedNavItemState();
 }
 
-class _AnimatedNavItemState extends State<_AnimatedNavItem> with SingleTickerProviderStateMixin {
+class _AnimatedNavItemState extends State<_AnimatedNavItem>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
   bool _isHovering = false;
@@ -113,9 +131,15 @@ class _AnimatedNavItemState extends State<_AnimatedNavItem> with SingleTickerPro
     _originalText = widget.text;
     _displayText = _originalText;
 
-    _controller = AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
 
-    _animation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _animation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -201,11 +225,27 @@ class _AnimatedNavItemState extends State<_AnimatedNavItem> with SingleTickerPro
           builder:
               (context, child) => AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 12,
+                ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: _isHovering ? AppColors.glassSurface.withValues(alpha: 0.3) : Colors.transparent,
-                  border: _isHovering ? Border.all(color: AppColors.textPrimary.withValues(alpha: 0.2)) : null,
+                  color:
+                      _isHovering
+                          ? AppColors.glassSurface.withValues(alpha: 0.3)
+                          : Colors.transparent,
+                  border:
+                      _isHovering
+                          ? Border.all(
+                            color: const Color.fromARGB(
+                              255,
+                              244,
+                              244,
+                              244,
+                            ).withValues(alpha: 0.2),
+                          )
+                          : null,
                   boxShadow:
                       _isHovering
                           ? [
@@ -223,7 +263,12 @@ class _AnimatedNavItemState extends State<_AnimatedNavItem> with SingleTickerPro
                     fontSize: fontSize,
                     fontWeight: FontWeight.w400,
                     letterSpacing: 0.5,
-                    color: AppColors.textPrimary.withValues(alpha: _isHovering ? 1.0 : 0.8),
+                    color: const Color.fromARGB(
+                      255,
+                      0,
+                      0,
+                      0,
+                    ).withValues(alpha: _isHovering ? 1.0 : 0.8),
                     fontFamily: 'Nunito', // Using the same font as the theme
                   ),
                 ),

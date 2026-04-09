@@ -8,14 +8,18 @@ class AssetLoadingScreen extends StatefulWidget {
   State<AssetLoadingScreen> createState() => _AssetLoadingScreenState();
 }
 
-class _AssetLoadingScreenState extends State<AssetLoadingScreen> with SingleTickerProviderStateMixin {
+class _AssetLoadingScreenState extends State<AssetLoadingScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(duration: const Duration(milliseconds: 2000), vsync: this);
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 2000),
+      vsync: this,
+    );
 
     _fadeAnimation = Tween<double>(
       begin: 0.3,
@@ -60,8 +64,12 @@ class _AssetLoadingScreenState extends State<AssetLoadingScreen> with SingleTick
                 SizedBox(
                   width: 120,
                   child: LinearProgressIndicator(
-                    backgroundColor: AppColors.textPrimary.withValues(alpha: 0.1),
-                    valueColor: AlwaysStoppedAnimation<Color>(AppColors.accent.withValues(alpha: _fadeAnimation.value)),
+                    backgroundColor: AppColors.textPrimary.withValues(
+                      alpha: 0.1,
+                    ),
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      AppColors.accent.withValues(alpha: _fadeAnimation.value),
+                    ),
                     minHeight: 2,
                   ),
                 ),

@@ -17,17 +17,28 @@ class HeroSnapScrollPhysics extends ScrollPhysics {
   const HeroSnapScrollPhysics({super.parent});
 
   @override
-  HeroSnapScrollPhysics applyTo(ScrollPhysics? ancestor) => HeroSnapScrollPhysics(parent: buildParent(ancestor));
+  HeroSnapScrollPhysics applyTo(ScrollPhysics? ancestor) =>
+      HeroSnapScrollPhysics(parent: buildParent(ancestor));
 
   @override
-  Simulation? createBallisticSimulation(ScrollMetrics position, double velocity) {
+  Simulation? createBallisticSimulation(
+    ScrollMetrics position,
+    double velocity,
+  ) {
     final heroSectionHeight = position.viewportDimension;
 
     if (position.pixels < heroSectionHeight) {
-      final snapOffset = position.pixels < heroSectionHeight / 2 ? 0.0 : heroSectionHeight;
+      final snapOffset =
+          position.pixels < heroSectionHeight / 2 ? 0.0 : heroSectionHeight;
 
       if ((position.pixels - snapOffset).abs() > 1.0) {
-        return ScrollSpringSimulation(spring, position.pixels, snapOffset, velocity, tolerance: toleranceFor(position));
+        return ScrollSpringSimulation(
+          spring,
+          position.pixels,
+          snapOffset,
+          velocity,
+          tolerance: toleranceFor(position),
+        );
       }
     }
 
@@ -125,19 +136,19 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildDrawerItem(String title, int index) => ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      title: Text(
-        title,
-        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              color: AppColors.textPrimary,
-              fontWeight: FontWeight.w300,
-            ),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+    title: Text(
+      title,
+      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+        color: const Color.fromARGB(255, 0, 0, 0),
+        fontWeight: FontWeight.w300,
       ),
-      onTap: () {
-        Navigator.of(context).pop();
-        _scrollToSectionFromNavbar(index);
-      },
-    );
+    ),
+    onTap: () {
+      Navigator.of(context).pop();
+      _scrollToSectionFromNavbar(index);
+    },
+  );
 
   void _scrollToSectionFromNavbar(int index) {
     if (index < 0 || index >= _sectionKeys.length) {
@@ -156,7 +167,9 @@ class _HomePageState extends State<HomePage> {
         final renderBox = context.findRenderObject()! as RenderBox;
         final position = renderBox.localToGlobal(Offset.zero);
 
-        final targetOffset = _scrollController.offset + position.dy; // Larger offset for navbar navigation
+        final targetOffset =
+            _scrollController.offset +
+            position.dy; // Larger offset for navbar navigation
 
         _scrollController.animateTo(
           targetOffset.clamp(0, _scrollController.position.maxScrollExtent),
@@ -200,16 +213,19 @@ class _HomePageState extends State<HomePage> {
               Align(
                 alignment: Alignment.centerRight,
                 child: IconButton(
-                  icon: const Icon(Icons.close, color: AppColors.textPrimary),
+                  icon: const Icon(
+                    Icons.close,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               ),
               const SizedBox(height: 40),
               _buildDrawerItem('About', 1),
               _buildDrawerItem('Skills', 2),
-              _buildDrawerItem('Timeline', 3),
-              _buildDrawerItem('Works', 4),
-              _buildDrawerItem('Contact', 6),
+              _buildDrawerItem('Timeline', 5),
+              _buildDrawerItem('Works', 6),
+              _buildDrawerItem('Contact', 7),
             ],
           ),
         ),
@@ -233,16 +249,30 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(key: _sectionKeys[1], child: const AboutSection()),
               Container(key: _sectionKeys[2], child: const SkillsSection()),
-              Container(key: _sectionKeys[3], child: TimelineSection(scrollController: _scrollController)),
-              Container(key: _sectionKeys[4], child: WorksSection(scrollController: _scrollController)),
-              Container(key: _sectionKeys[5], child: StandOutSection(scrollController: _scrollController)),
+              Container(
+                key: _sectionKeys[3],
+                child: TimelineSection(scrollController: _scrollController),
+              ),
+              Container(
+                key: _sectionKeys[4],
+                child: WorksSection(scrollController: _scrollController),
+              ),
+              Container(
+                key: _sectionKeys[5],
+                child: StandOutSection(scrollController: _scrollController),
+              ),
               Container(key: _sectionKeys[6], child: const ContactSection()),
               const Footer(),
             ],
           ),
         ),
 
-        Positioned(top: 0, left: 0, right: 0, child: GlassNavbar(onNavigationTap: _scrollToSectionFromNavbar)),
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          child: GlassNavbar(onNavigationTap: _scrollToSectionFromNavbar),
+        ),
 
         ScrollTimelineIndicator(
           scrollController: _scrollController,

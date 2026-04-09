@@ -95,7 +95,7 @@ class _CurtainLoaderState extends State<CurtainLoader>
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: AppColors.bgDark,
+      backgroundColor: const Color.fromRGBO(26, 31, 43, 1),
       body: Stack(
         children: [
           AnimatedBuilder(

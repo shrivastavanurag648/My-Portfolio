@@ -3,7 +3,11 @@ import 'package:polymorphism/core/theme/app_theme.dart';
 import 'package:polymorphism/modules/timeline/timeline_strip.dart';
 
 class TimelineSection extends StatelessWidget {
-  const TimelineSection({super.key, this.enableAnimations = true, this.scrollController});
+  const TimelineSection({
+    super.key,
+    this.enableAnimations = true,
+    this.scrollController,
+  });
   final bool enableAnimations;
   final ScrollController? scrollController;
 
@@ -17,7 +21,10 @@ class TimelineSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontalPadding,
+        vertical: verticalPadding,
+      ),
       color: AppColors.bgDark,
       child: Column(
         children: [
@@ -26,7 +33,7 @@ class TimelineSection extends StatelessWidget {
             child: Text(
               'Career Timeline',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                color: AppColors.textPrimary,
+                color: const Color.fromARGB(255, 244, 244, 244),
                 fontWeight: FontWeight.w700,
                 fontSize: _getResponsiveFontSize(context, 28),
               ),
@@ -37,11 +44,13 @@ class TimelineSection extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
 
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: isMobile ? 0 : AppSpacing.xl),
+            padding: EdgeInsets.symmetric(
+              horizontal: isMobile ? 0 : AppSpacing.xl,
+            ),
             child: Text(
               'A journey through professional milestones and growth',
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: AppColors.textPrimary.withValues(alpha: 0.8),
+                color: const Color.fromARGB(255, 248, 248, 248),
                 fontSize: _getResponsiveFontSize(context, 16),
               ),
               textAlign: TextAlign.center,
@@ -50,7 +59,10 @@ class TimelineSection extends StatelessWidget {
 
           SizedBox(height: isMobile ? AppSpacing.xl : AppSpacing.xxl),
 
-          TimelineStrip(enableAnimations: enableAnimations, scrollController: scrollController),
+          TimelineStrip(
+            enableAnimations: enableAnimations,
+            scrollController: scrollController,
+          ),
 
           const SizedBox(height: AppSpacing.xl),
         ],

@@ -201,7 +201,7 @@ class _WorksSectionState extends State<WorksSection> {
                     key: _textKey,
                     'DESIGNED WITH LOGIC DESIGNED WITH LOGIC DESIGNED WITH LOGIC',
                     style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      color: AppColors.bgDark,
+                      color: const Color(0xFFE0E0E1),
                       fontWeight: FontWeight.w900,
                       fontSize: isMobile ? 80 : 180,
                     ),
@@ -234,15 +234,15 @@ class _WorksSectionState extends State<WorksSection> {
         child: Text(
           '(Works.)',
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: AppColors.bgDark,
+            color: const Color.fromARGB(255, 244, 244, 244),
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
       Text(
-        'This creation is a confession, written in dark and dart.',
+        'This piece is a confession, carved in shadow and sealed with silence',
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-          color: AppColors.bgDark,
+          color: const Color.fromARGB(255, 244, 244, 244),
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -256,16 +256,16 @@ class _WorksSectionState extends State<WorksSection> {
       Text(
         '(Works.)',
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-          color: AppColors.bgDark,
+          color: const Color.fromARGB(255, 244, 244, 244),
           fontWeight: FontWeight.bold,
           fontSize: 16,
         ),
       ),
       const SizedBox(height: 8),
       Text(
-        'This creation is a confession, written in dark and dart.',
+        'This piece is a confession, carved in shadow and sealed with silence.',
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: AppColors.bgDark,
+          color: const Color(0xFFE0E0E1),
           fontWeight: FontWeight.bold,
           fontSize: 14,
         ),
@@ -318,7 +318,7 @@ class _WorksSectionState extends State<WorksSection> {
             horizontal: horizontalPadding(context),
           ),
           decoration: const BoxDecoration(
-            color: AppColors.bgDark,
+            color: Color.fromARGB(255, 253, 254, 255),
             image: DecorationImage(
               image: AssetImage('assets/images/workBg.png'),
               fit: BoxFit.cover,
@@ -339,7 +339,7 @@ class _WorksSectionState extends State<WorksSection> {
                       style: Theme.of(
                         context,
                       ).textTheme.headlineLarge!.copyWith(
-                        color: AppColors.bgDark,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.w700,
                         fontSize: 24,
                       ),
@@ -348,7 +348,7 @@ class _WorksSectionState extends State<WorksSection> {
                     Text(
                       description,
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: AppColors.bgDark,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         fontSize: 14,
                         height: 1.4,
                       ),
@@ -399,7 +399,7 @@ class _WorksSectionState extends State<WorksSection> {
             horizontal: horizontalPadding(context),
           ),
           decoration: const BoxDecoration(
-            color: AppColors.bgDark,
+            color: Color.fromARGB(255, 253, 254, 255),
             image: DecorationImage(
               image: AssetImage('assets/images/workBg.png'),
               fit: BoxFit.cover,
@@ -418,7 +418,7 @@ class _WorksSectionState extends State<WorksSection> {
                       style: Theme.of(
                         context,
                       ).textTheme.headlineLarge!.copyWith(
-                        color: AppColors.bgDark,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.w700,
                         fontSize: 28,
                       ),
@@ -427,7 +427,7 @@ class _WorksSectionState extends State<WorksSection> {
                     Text(
                       description,
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: AppColors.bgDark,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         fontSize: 16,
                       ),
                     ),
@@ -464,7 +464,7 @@ class _WorksSectionState extends State<WorksSection> {
             horizontal: horizontalPadding(context),
           ),
           decoration: const BoxDecoration(
-            color: AppColors.bgDark,
+            color: Color.fromARGB(255, 253, 254, 255),
             image: DecorationImage(
               image: AssetImage('assets/images/workBg.png'),
               fit: BoxFit.cover,
@@ -483,7 +483,7 @@ class _WorksSectionState extends State<WorksSection> {
                       style: Theme.of(
                         context,
                       ).textTheme.headlineLarge!.copyWith(
-                        color: AppColors.bgDark,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.w700,
                         fontSize: 28,
                       ),
@@ -492,7 +492,7 @@ class _WorksSectionState extends State<WorksSection> {
                     Text(
                       description,
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: AppColors.bgDark,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         fontSize: 16,
                       ),
                     ),
@@ -515,10 +515,15 @@ class _WorksSectionState extends State<WorksSection> {
                             (context, error, stackTrace) => Container(
                               height: screenHeight(context) * 0.7,
                               width: 200,
-                              color: AppColors.bgDark.withValues(alpha: 0.1),
+                              color: const Color.fromARGB(
+                                255,
+                                253,
+                                254,
+                                255,
+                              ).withValues(alpha: 0.1),
                               child: const Icon(
                                 Icons.image_not_supported,
-                                color: AppColors.textPrimary,
+                                color: const Color.fromARGB(255, 255, 255, 255),
                               ),
                             ),
                       ),
@@ -532,10 +537,15 @@ class _WorksSectionState extends State<WorksSection> {
                             (context, error, stackTrace) => Container(
                               height: screenHeight(context) * 0.7,
                               width: 200,
-                              color: AppColors.bgDark.withValues(alpha: 0.1),
+                              color: const Color.fromARGB(
+                                255,
+                                253,
+                                254,
+                                255,
+                              ).withValues(alpha: 0.1),
                               child: const Icon(
                                 Icons.image_not_supported,
-                                color: AppColors.textPrimary,
+                                color: const Color.fromARGB(255, 255, 255, 255),
                               ),
                             ),
                       ),
@@ -549,10 +559,15 @@ class _WorksSectionState extends State<WorksSection> {
                             (context, error, stackTrace) => Container(
                               height: screenHeight(context) * 0.7,
                               width: 200,
-                              color: AppColors.bgDark.withValues(alpha: 0.1),
+                              color: const Color.fromARGB(
+                                255,
+                                253,
+                                254,
+                                255,
+                              ).withValues(alpha: 0.1),
                               child: const Icon(
                                 Icons.image_not_supported,
-                                color: AppColors.textPrimary,
+                                color: const Color.fromARGB(255, 255, 255, 255),
                               ),
                             ),
                       ),
@@ -630,12 +645,20 @@ class _ProjectImageCarouselState extends State<_ProjectImageCarousel> {
                                           ? screenWidth * 0.85
                                           : screenWidth * 0.7,
                                   height: 200,
-                                  color: AppColors.bgDark.withValues(
-                                    alpha: 0.1,
-                                  ),
+                                  color: const Color.fromARGB(
+                                    255,
+                                    253,
+                                    254,
+                                    255,
+                                  ).withValues(alpha: 0.1),
                                   child: const Icon(
                                     Icons.image_not_supported,
-                                    color: AppColors.textPrimary,
+                                    color: const Color.fromARGB(
+                                      255,
+                                      255,
+                                      255,
+                                      255,
+                                    ),
                                   ),
                                 ),
                           ),
@@ -660,7 +683,12 @@ class _ProjectImageCarouselState extends State<_ProjectImageCarousel> {
                           width: isMobile ? 32 : 40,
                           height: isMobile ? 32 : 40,
                           decoration: BoxDecoration(
-                            color: AppColors.bgDark.withValues(alpha: 0.7),
+                            color: const Color.fromARGB(
+                              255,
+                              253,
+                              254,
+                              255,
+                            ).withValues(alpha: 0.7),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
@@ -690,7 +718,12 @@ class _ProjectImageCarouselState extends State<_ProjectImageCarousel> {
                           width: isMobile ? 32 : 40,
                           height: isMobile ? 32 : 40,
                           decoration: BoxDecoration(
-                            color: AppColors.bgDark.withValues(alpha: 0.7),
+                            color: const Color.fromARGB(
+                              255,
+                              253,
+                              254,
+                              255,
+                            ).withValues(alpha: 0.7),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
@@ -731,8 +764,18 @@ class _ProjectImageCarouselState extends State<_ProjectImageCarousel> {
                   decoration: BoxDecoration(
                     color:
                         _currentPage == index
-                            ? AppColors.bgDark.withValues(alpha: 0.8)
-                            : AppColors.bgDark.withValues(alpha: 0.3),
+                            ? const Color.fromARGB(
+                              255,
+                              253,
+                              254,
+                              255,
+                            ).withValues(alpha: 0.8)
+                            : const Color.fromARGB(
+                              255,
+                              253,
+                              254,
+                              255,
+                            ).withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
@@ -814,12 +857,20 @@ class _ProjectImageCarouselMobileState
                                           ? screenHeight * 0.4
                                           : screenHeight * 0.8,
                                   width: 200,
-                                  color: AppColors.bgDark.withValues(
-                                    alpha: 0.1,
-                                  ),
+                                  color: const Color.fromARGB(
+                                    255,
+                                    253,
+                                    254,
+                                    255,
+                                  ).withValues(alpha: 0.1),
                                   child: const Icon(
                                     Icons.image_not_supported,
-                                    color: AppColors.textPrimary,
+                                    color: const Color.fromARGB(
+                                      255,
+                                      255,
+                                      255,
+                                      255,
+                                    ),
                                   ),
                                 ),
                           ),
@@ -844,7 +895,12 @@ class _ProjectImageCarouselMobileState
                           width: isMobile ? 32 : 40,
                           height: isMobile ? 32 : 40,
                           decoration: BoxDecoration(
-                            color: AppColors.bgDark.withValues(alpha: 0.7),
+                            color: const Color.fromARGB(
+                              255,
+                              253,
+                              254,
+                              255,
+                            ).withValues(alpha: 0.7),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
@@ -874,7 +930,12 @@ class _ProjectImageCarouselMobileState
                           width: isMobile ? 32 : 40,
                           height: isMobile ? 32 : 40,
                           decoration: BoxDecoration(
-                            color: AppColors.bgDark.withValues(alpha: 0.7),
+                            color: const Color.fromARGB(
+                              255,
+                              253,
+                              254,
+                              255,
+                            ).withValues(alpha: 0.7),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
@@ -915,8 +976,18 @@ class _ProjectImageCarouselMobileState
                   decoration: BoxDecoration(
                     color:
                         _currentPage == index
-                            ? AppColors.bgDark.withValues(alpha: 0.8)
-                            : AppColors.bgDark.withValues(alpha: 0.3),
+                            ? const Color.fromARGB(
+                              255,
+                              253,
+                              254,
+                              255,
+                            ).withValues(alpha: 0.8)
+                            : const Color.fromARGB(
+                              255,
+                              253,
+                              254,
+                              255,
+                            ).withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),

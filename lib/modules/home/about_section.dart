@@ -47,7 +47,7 @@ class AboutSection extends StatelessWidget {
         child: Text(
           '(About.)',
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: AppColors.textPrimary,
+            color: const Color.fromARGB(255, 244, 244, 244),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -89,7 +89,7 @@ class AboutSection extends StatelessWidget {
             child: Text(
               '(About.)',
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: AppColors.textPrimary,
+                color: const Color.fromARGB(255, 244, 244, 244),
                 fontWeight: FontWeight.bold,
               ),
             ),

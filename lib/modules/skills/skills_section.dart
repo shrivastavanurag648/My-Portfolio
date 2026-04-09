@@ -88,9 +88,34 @@ class SkillsSection extends StatelessWidget {
                     brandColor: Colors.yellow,
                   ),
                   SkillOrb(
-                    icon: getSkillIcon('C'),
-                    label: 'C',
+                    icon: getSkillIcon('Java'),
+                    label: 'Java',
+                    brandColor: Colors.red,
+                  ),
+                  SkillOrb(
+                    icon: getSkillIcon('Dart'),
+                    label: 'Dart',
                     brandColor: Colors.indigo,
+                  ),
+                  SkillOrb(
+                    icon: getSkillIcon('PHP'),
+                    label: 'PHP',
+                    brandColor: Colors.brown,
+                  ),
+                  SkillOrb(
+                    icon: getSkillIcon('SQL'),
+                    label: 'SQL',
+                    brandColor: Colors.blueGrey,
+                  ),
+                  SkillOrb(
+                    icon: getSkillIcon('NoSQL'),
+                    label: 'NoSQL',
+                    brandColor: Colors.tealAccent,
+                  ),
+                  SkillOrb(
+                    icon: getSkillIcon('GraphQL'),
+                    label: 'GraphQL',
+                    brandColor: Colors.deepPurpleAccent,
                   ),
                 ],
               ),

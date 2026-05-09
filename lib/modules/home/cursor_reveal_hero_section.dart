@@ -137,7 +137,8 @@ class _CursorRevealHeroSectionState extends State<CursorRevealHeroSection>
             child: Image.asset(
               'assets/images/Foreground.jpg',
               fit: BoxFit.cover, // Fills the entire vertical space
-              alignment: Alignment.topLeft, // Anchors the crop to his head/hat
+              alignment:
+                  Alignment.centerLeft, // Anchors the crop to his head/hat
               errorBuilder:
                   (context, error, stackTrace) => Container(
                     decoration: BoxDecoration(

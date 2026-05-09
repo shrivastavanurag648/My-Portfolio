@@ -6,7 +6,7 @@ Widget getSkillIcon(String techName) {
   // --- FRONTEND & MOBILE ---
   if (lowercaseName.contains('react')) {
     return Image.asset(
-      'icons/react.png',
+      'assets/icons/react.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -15,7 +15,7 @@ Widget getSkillIcon(String techName) {
     );
   } else if (lowercaseName.contains('javascript') || lowercaseName == 'js') {
     return Image.asset(
-      'icons/javascript.png',
+      'assets/icons/javascript.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -24,7 +24,7 @@ Widget getSkillIcon(String techName) {
     );
   } else if (lowercaseName.contains('html')) {
     return Image.asset(
-      'icons/html.png',
+      'assets/icons/html.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -33,7 +33,7 @@ Widget getSkillIcon(String techName) {
     );
   } else if (lowercaseName.contains('css')) {
     return Image.asset(
-      'icons/css.png',
+      'assets/icons/css.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -42,7 +42,7 @@ Widget getSkillIcon(String techName) {
     );
   } else if (lowercaseName.contains('flutter')) {
     return Image.asset(
-      'icons/flutter.png',
+      'assets/icons/flutter.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -53,7 +53,7 @@ Widget getSkillIcon(String techName) {
   // --- BACKEND & RUNTIMES ---
   else if (lowercaseName.contains('node')) {
     return Image.asset(
-      'icons/node.png',
+      'assets/icons/node.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -62,7 +62,7 @@ Widget getSkillIcon(String techName) {
     );
   } else if (lowercaseName.contains('express')) {
     return Image.asset(
-      'icons/express.png',
+      'assets/icons/express.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -74,7 +74,7 @@ Widget getSkillIcon(String techName) {
     );
   } else if (lowercaseName.contains('fastapi')) {
     return Image.asset(
-      'icons/fastapi.png',
+      'assets/icons/fastapi.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -86,7 +86,7 @@ Widget getSkillIcon(String techName) {
   else if (lowercaseName.contains('mongodb') ||
       lowercaseName.contains('mongo')) {
     return Image.asset(
-      'icons/mongodb.png',
+      'assets/icons/mongodb.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -95,7 +95,7 @@ Widget getSkillIcon(String techName) {
     );
   } else if (lowercaseName.contains('nosql')) {
     return Image.asset(
-      'icons/nosql.png',
+      'assets/icons/nosql.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -104,7 +104,7 @@ Widget getSkillIcon(String techName) {
     );
   } else if (lowercaseName.contains('graphql')) {
     return Image.asset(
-      'icons/graphql.png',
+      'assets/icons/graphql.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -113,7 +113,7 @@ Widget getSkillIcon(String techName) {
     );
   } else if (lowercaseName.contains('sql')) {
     return Image.asset(
-      'icons/sql.png',
+      'assets/icons/sql.png',
       height: 40,
       fit: BoxFit.contain,
       errorBuilder:
@@ -126,7 +126,7 @@ Widget getSkillIcon(String techName) {
   switch (lowercaseName) {
     case 'python':
       return Image.asset(
-        'icons/python.png',
+        'assets/icons/python.png',
         height: 40,
         fit: BoxFit.contain,
         errorBuilder:
@@ -138,7 +138,7 @@ Widget getSkillIcon(String techName) {
       return const Icon(Icons.terminal, size: 40, color: Colors.indigo);
     case 'java':
       return Image.asset(
-        'icons/java.png',
+        'assets/icons/java.png',
         height: 40,
         fit: BoxFit.contain,
         errorBuilder:
@@ -147,7 +147,7 @@ Widget getSkillIcon(String techName) {
       );
     case 'dart':
       return Image.asset(
-        'icons/dart.png',
+        'assets/icons/dart.png',
         height: 40,
         fit: BoxFit.contain,
         errorBuilder:
@@ -156,7 +156,7 @@ Widget getSkillIcon(String techName) {
       );
     case 'php':
       return Image.asset(
-        'icons/php.png',
+        'assets/icons/php.png',
         height: 40,
         fit: BoxFit.contain,
         errorBuilder:

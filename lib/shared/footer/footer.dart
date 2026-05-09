@@ -98,10 +98,15 @@ class _FooterState extends State<Footer> {
           color: AppColors.textPrimary.withValues(alpha: .7),
         ),
       ),
-      Text(
-        'shrivastavanurag648@gmail.com',
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: AppColors.textPrimary.withValues(alpha: .7),
+      Expanded(
+        child: Text(
+          'shrivastavanurag648@gmail.com',
+          textAlign: TextAlign.center,
+          softWrap: true,
+          overflow: TextOverflow.visible,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: AppColors.textPrimary.withValues(alpha: .7),
+          ),
         ),
       ),
       Text(
@@ -162,7 +167,9 @@ class _FooterState extends State<Footer> {
         children: [
           Expanded(
             child: Text(
-              'shrivastav@gmail.com',
+              'shrivastavanurag648@gmail.com',
+              softWrap: true,
+              overflow: TextOverflow.visible,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textPrimary.withValues(alpha: .7),
                 fontSize: 12,

@@ -30,18 +30,15 @@ class AssetPreloader {
     'assets/images/works/project2-1.png',
     'assets/images/works/project2-2.png',
     'assets/images/works/project2-3.png',
-    'assets/images/works/project3-1.png',
-    'assets/images/works/project3-2.png',
-    'assets/images/works/project3-3.png',
     'assets/images/works/project4-1.png',
     'assets/images/works/project4-2.png',
     'assets/images/works/project4-3.png',
     'assets/images/works/project5-1.png',
     'assets/images/works/project5-2.png',
     'assets/images/works/project5-3.png',
-    'assets/images/works/project6-1.png',
-    'assets/images/works/project6-2.png',
-    'assets/images/works/project6-3.png',
+    'assets/images/works/nexus_1.png',
+    'assets/images/works/nexus_2.png',
+    'assets/images/works/nexus_3.png',
   ];
 
   Future<void> preloadAssets() async {

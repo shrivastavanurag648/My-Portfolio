@@ -88,7 +88,7 @@ class _CursorRevealHeroSectionState extends State<CursorRevealHeroSection>
         color: AppColors.bgDark,
         child: Stack(
           children: [
-            _buildBackgroundImage(),
+            _buildBackgroundImage(context),
 
             if (isDesktop) _buildMaskedForegroundImage(),
 
@@ -126,48 +126,60 @@ class _CursorRevealHeroSectionState extends State<CursorRevealHeroSection>
     },
   );
 
-  Widget _buildBackgroundImage() => Positioned.fill(
-    child: Stack(
-      children: [
-        Positioned.fill(
-          child: Image.asset(
-            'assets/images/Foreground.jpg',
-            fit: BoxFit.cover,
-            errorBuilder:
-                (context, error, stackTrace) => Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        AppColors.bgDark,
-                        AppColors.moonGlow.withValues(alpha: 0.1),
-                        AppColors.bgDark,
-                      ],
-                      stops: const [0.0, 0.5, 1.0],
+  Widget _buildBackgroundImage(BuildContext context) {
+    return Positioned.fill(
+      // Ensures the background takes up the WHOLE Hero section
+      child: Stack(
+        children: [
+          // 1. The Main Image Layer
+          Positioned.fill(
+            // <-- Removed the SizedBox! Let it fill the whole space.
+            child: Image.asset(
+              'assets/images/Foreground.jpg',
+              fit: BoxFit.cover, // Fills the entire vertical space
+              alignment: Alignment.topLeft, // Anchors the crop to his head/hat
+              errorBuilder:
+                  (context, error, stackTrace) => Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          AppColors.bgDark,
+                          AppColors.moonGlow.withValues(alpha: 0.1),
+                          AppColors.bgDark,
+                        ],
+                        stops: const [0.0, 0.5, 1.0],
+                      ),
                     ),
                   ),
-                ),
+            ),
           ),
-        ),
-        Positioned.fill(
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  AppColors.bgDark.withValues(alpha: 0.1),
-                  AppColors.bgDark.withValues(alpha: 0.4),
-                ],
-                stops: const [0.0, 1.0],
+
+          // 2. The Gradient Overlay Layer
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    AppColors.bgDark.withValues(
+                      alpha: 0.2,
+                    ), // Lighter at the top so we see him
+                    AppColors.bgDark.withValues(
+                      alpha: 0.9,
+                    ), // Darker at the bottom so the text pops!
+                  ],
+                  stops: const [0.0, 1.0],
+                ),
               ),
             ),
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 
   Widget _buildMaskedForegroundImage() => AnimatedBuilder(
     animation: Listenable.merge([_breathController, _cursorRevealController]),

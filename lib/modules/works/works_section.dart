@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tilt/flutter_tilt.dart';
 import 'package:polymorphism/core/constant.dart';
-import 'package:polymorphism/core/theme/app_theme.dart';
+import 'package:polymorphism/shared/animations/scroll_reveal.dart';
 
 enum ProjectType { mobile, desktop }
 
@@ -120,21 +120,33 @@ class _WorksSectionState extends State<WorksSection> {
               context,
               'Wander-lust',
               'A blazingly fast, zero-dependency tourism platform built with CSS and JavaScript. It delivers a highly responsive, animated booking experience straight from low-level POSIX sockets',
-              'assets/images/works/project1-1.png',
+              [
+                'assets/images/works/project1-1.png',
+                'assets/images/works/project1-2.png',
+                'assets/images/works/project1-3.png',
+              ],
               ProjectType.desktop,
             ),
             _buildProject(
               context,
               'Tenant Intelligence System',
               'A privacy-first platform where tenants anonymously report housing issues while AI aggregates and analyzes complaints to expose recurring problems and repeat-offender landlords.',
-              'assets/images/works/project2-1.png',
+              [
+                'assets/images/works/project2-1.png',
+                'assets/images/works/project2-2.png',
+                'assets/images/works/project2-3.png',
+              ],
               ProjectType.desktop,
             ),
             _buildProject(
               context,
-              'Roast POS',
-              'An all-in-one restaurant operations app built for day-to-day operations.',
-              'assets/images/works/project6-1.png',
+              'Nexus-Tactical Engine',
+              'Engineered a high-security, full-stack spatial management platform designed to modernize student housing allocation and eliminate legacy spreadsheet dependencies. The system features a strictly decoupled RESTful architecture, utilizing a cinematic React.js Heads-Up Display (HUD) to provide administrators with real-time, thermal-mapped visual telemetry of building occupancy via asynchronous data polling.',
+              [
+                'assets/images/works/nexus_1.png',
+                'assets/images/works/nexus_2.png',
+                'assets/images/works/nexus_3.png',
+              ],
               ProjectType.desktop,
             ),
           ] else ...[
@@ -142,21 +154,33 @@ class _WorksSectionState extends State<WorksSection> {
               context,
               'Wander-lust',
               'A blazingly fast, zero-dependency tourism platform built with CSS and JavaScript. It delivers a highly responsive, animated booking experience straight from low-level POSIX sockets',
-              'assets/images/works/project1-1.png',
+              [
+                'assets/images/works/project1-1.png',
+                'assets/images/works/project1-2.png',
+                'assets/images/works/project1-3.png',
+              ],
               ProjectType.desktop,
             ),
             _buildProject(
               context,
               'Tenant Intelligence System',
               'A privacy-first platform where tenants anonymously report housing issues while AI aggregates and analyzes complaints to expose recurring problems and repeat-offender landlords.',
-              'assets/images/works/project2-1.png',
+              [
+                'assets/images/works/project2-1.png',
+                'assets/images/works/project2-2.png',
+                'assets/images/works/project2-3.png',
+              ],
               ProjectType.desktop,
             ),
             _buildProject(
               context,
-              'Roast POS',
-              "An all-in-one restaurant operations app built to handle everything from POS transactions to inventory, stock tracking, staff presence, and real-time dashboards. Designed for smooth day-to-day operations — whether you're managing the floor, the kitchen, or the cash flow. Roast POS brings structure, clarity, and speed to the hustle of running a restaurant.",
-              'assets/images/works/project6-1.png',
+              'Nexus-Tactical Engine',
+              'Engineered a high-security, full-stack spatial management platform designed to modernize student housing allocation and eliminate legacy spreadsheet dependencies. The system features a strictly decoupled RESTful architecture, utilizing a cinematic React.js Heads-Up Display (HUD) to provide administrators with real-time, thermal-mapped visual telemetry of building occupancy via asynchronous data polling.',
+              [
+                'assets/images/works/nexus_1.png',
+                'assets/images/works/nexus_2.png',
+                'assets/images/works/nexus_3.png',
+              ],
               ProjectType.desktop,
             ),
           ],
@@ -239,11 +263,14 @@ class _WorksSectionState extends State<WorksSection> {
           ),
         ),
       ),
-      Text(
-        'This piece is a confession, carved in shadow and sealed with silence',
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-          color: const Color.fromARGB(255, 244, 244, 244),
-          fontWeight: FontWeight.bold,
+      Expanded(
+        child: Text(
+          'This piece is a confession, carved in shadow and sealed with silence',
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            color: const Color.fromARGB(255, 244, 244, 244),
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
         ),
       ),
       SizedBox(width: screenWidth(context) * .15),
@@ -278,7 +305,7 @@ class _WorksSectionState extends State<WorksSection> {
     BuildContext context,
     String title,
     String description,
-    String imagePath,
+    List<String> imagePaths,
     ProjectType projectType,
   ) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -289,7 +316,7 @@ class _WorksSectionState extends State<WorksSection> {
         context,
         title,
         description,
-        imagePath,
+        imagePaths,
         projectType,
       );
     } else {
@@ -298,9 +325,9 @@ class _WorksSectionState extends State<WorksSection> {
             context,
             title,
             description,
-            imagePath,
+            imagePaths,
           )
-          : _buildDesktopLayout(context, title, description, imagePath);
+          : _buildDesktopLayout(context, title, description, imagePaths);
     }
   }
 
@@ -308,7 +335,7 @@ class _WorksSectionState extends State<WorksSection> {
     BuildContext context,
     String title,
     String description,
-    String imagePath,
+    List<String> imagePaths,
     ProjectType projectType,
   ) => LayoutBuilder(
     builder:
@@ -343,6 +370,8 @@ class _WorksSectionState extends State<WorksSection> {
                         fontWeight: FontWeight.w700,
                         fontSize: 24,
                       ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 12),
                     Text(
@@ -362,20 +391,8 @@ class _WorksSectionState extends State<WorksSection> {
                   width: screenWidth(context) * 0.85,
                   child:
                       projectType == ProjectType.mobile
-                          ? _ProjectImageCarouselMobile(
-                            imagePaths: [
-                              imagePath,
-                              imagePath.replaceAll('-1.', '-2.'),
-                              imagePath.replaceAll('-1.', '-3.'),
-                            ],
-                          )
-                          : _ProjectImageCarousel(
-                            imagePaths: [
-                              imagePath,
-                              imagePath.replaceAll('-1.', '-2.'),
-                              imagePath.replaceAll('-1.', '-3.'),
-                            ],
-                          ),
+                          ? _ProjectImageCarouselMobile(imagePaths: imagePaths)
+                          : _ProjectImageCarousel(imagePaths: imagePaths),
                 ),
               ),
               SizedBox(height: verticalPadding(context) * 0.5),
@@ -388,7 +405,7 @@ class _WorksSectionState extends State<WorksSection> {
     BuildContext context,
     String title,
     String description,
-    String imagePath,
+    List<String> imagePaths,
   ) => LayoutBuilder(
     builder:
         (context, constraints) => Container(
@@ -409,41 +426,36 @@ class _WorksSectionState extends State<WorksSection> {
             children: [
               SizedBox(
                 width: screenWidth(context) * .15,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: verticalPadding(context) * 2),
-                    Text(
-                      title,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.headlineLarge!.copyWith(
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        fontWeight: FontWeight.w700,
-                        fontSize: 28,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: verticalPadding(context) * 2),
+                      Text(
+                        title,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineLarge!.copyWith(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 28,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      description,
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 16,
+                      const SizedBox(height: 10),
+                      Text(
+                        description,
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               SizedBox(width: screenWidth(context) * .03),
-              Expanded(
-                child: _ProjectImageCarousel(
-                  imagePaths: [
-                    imagePath,
-                    imagePath.replaceAll('-1.', '-2.'),
-                    imagePath.replaceAll('-1.', '-3.'),
-                  ],
-                ),
-              ),
+              Expanded(child: _ProjectImageCarousel(imagePaths: imagePaths)),
             ],
           ),
         ),
@@ -453,7 +465,7 @@ class _WorksSectionState extends State<WorksSection> {
     BuildContext context,
     String title,
     String description,
-    String imagePath,
+    List<String> imagePaths,
   ) => LayoutBuilder(
     builder:
         (context, constraints) => Container(
@@ -474,29 +486,32 @@ class _WorksSectionState extends State<WorksSection> {
             children: [
               SizedBox(
                 width: screenWidth(context) * .18,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: verticalPadding(context) * 2),
-                    Text(
-                      title,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.headlineLarge!.copyWith(
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        fontWeight: FontWeight.w700,
-                        fontSize: 28,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: verticalPadding(context) * 2),
+                      Text(
+                        title,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineLarge!.copyWith(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 28,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      description,
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 16,
+                      const SizedBox(height: 10),
+                      Text(
+                        description,
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               SizedBox(width: screenWidth(context) * .03),
@@ -507,69 +522,93 @@ class _WorksSectionState extends State<WorksSection> {
                   spacing: 16,
                   children: [
                     Tilt(
-                      child: Image.asset(
-                        imagePath,
-                        fit: BoxFit.contain,
-                        height: screenHeight(context) * 0.7,
-                        errorBuilder:
-                            (context, error, stackTrace) => Container(
-                              height: screenHeight(context) * 0.7,
-                              width: 200,
-                              color: const Color.fromARGB(
-                                255,
-                                253,
-                                254,
-                                255,
-                              ).withValues(alpha: 0.1),
-                              child: const Icon(
-                                Icons.image_not_supported,
-                                color: const Color.fromARGB(255, 255, 255, 255),
+                      child: AspectRatio(
+                        aspectRatio: 1440 / 960,
+                        child: Image.asset(
+                          imagePaths[0],
+                          fit: BoxFit.cover,
+                          height: screenHeight(context) * 0.7,
+                          errorBuilder:
+                              (context, error, stackTrace) => Container(
+                                height: screenHeight(context) * 0.7,
+                                width: double.infinity,
+                                color: Color.fromARGB(
+                                  255,
+                                  253,
+                                  254,
+                                  255,
+                                ).withValues(alpha: 0.1),
+                                child: const Icon(
+                                  Icons.image_not_supported,
+                                  color: const Color.fromARGB(
+                                    255,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
+                                ),
                               ),
-                            ),
+                        ),
                       ),
                     ),
                     Tilt(
-                      child: Image.asset(
-                        imagePath.replaceAll('-1.', '-2.'),
-                        fit: BoxFit.contain,
-                        height: screenHeight(context) * 0.7,
-                        errorBuilder:
-                            (context, error, stackTrace) => Container(
-                              height: screenHeight(context) * 0.7,
-                              width: 200,
-                              color: const Color.fromARGB(
-                                255,
-                                253,
-                                254,
-                                255,
-                              ).withValues(alpha: 0.1),
-                              child: const Icon(
-                                Icons.image_not_supported,
-                                color: const Color.fromARGB(255, 255, 255, 255),
+                      child: AspectRatio(
+                        aspectRatio: 1440 / 960,
+                        child: Image.asset(
+                          imagePaths[1],
+                          fit: BoxFit.cover,
+                          height: screenHeight(context) * 0.7,
+                          errorBuilder:
+                              (context, error, stackTrace) => Container(
+                                height: screenHeight(context) * 0.7,
+                                width: double.infinity,
+                                color: const Color.fromARGB(
+                                  255,
+                                  253,
+                                  254,
+                                  255,
+                                ).withValues(alpha: 0.1),
+                                child: const Icon(
+                                  Icons.image_not_supported,
+                                  color: const Color.fromARGB(
+                                    255,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
+                                ),
                               ),
-                            ),
+                        ),
                       ),
                     ),
                     Tilt(
-                      child: Image.asset(
-                        imagePath.replaceAll('-1.', '-3.'),
-                        fit: BoxFit.contain,
-                        height: screenHeight(context) * 0.7,
-                        errorBuilder:
-                            (context, error, stackTrace) => Container(
-                              height: screenHeight(context) * 0.7,
-                              width: 200,
-                              color: const Color.fromARGB(
-                                255,
-                                253,
-                                254,
-                                255,
-                              ).withValues(alpha: 0.1),
-                              child: const Icon(
-                                Icons.image_not_supported,
-                                color: const Color.fromARGB(255, 255, 255, 255),
+                      child: AspectRatio(
+                        aspectRatio: 1440 / 960,
+                        child: Image.asset(
+                          imagePaths[2],
+                          fit: BoxFit.cover,
+                          height: screenHeight(context) * 0.7,
+                          errorBuilder:
+                              (context, error, stackTrace) => Container(
+                                height: screenHeight(context) * 0.7,
+                                width: double.infinity,
+                                color: const Color.fromARGB(
+                                  255,
+                                  253,
+                                  254,
+                                  255,
+                                ).withValues(alpha: 0.1),
+                                child: const Icon(
+                                  Icons.image_not_supported,
+                                  color: const Color.fromARGB(
+                                    255,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
+                                ),
                               ),
-                            ),
+                        ),
                       ),
                     ),
                   ],
@@ -631,36 +670,39 @@ class _ProjectImageCarouselState extends State<_ProjectImageCarousel> {
                           vertical: isMobile ? 4 : 8,
                         ),
                         child: Tilt(
-                          child: Image.asset(
-                            widget.imagePaths[index],
-                            fit: BoxFit.contain,
-                            width:
-                                isMobile
-                                    ? screenWidth * 0.85
-                                    : screenWidth * 0.7,
-                            errorBuilder:
-                                (context, error, stackTrace) => Container(
-                                  width:
-                                      isMobile
-                                          ? screenWidth * 0.85
-                                          : screenWidth * 0.7,
-                                  height: 200,
-                                  color: const Color.fromARGB(
-                                    255,
-                                    253,
-                                    254,
-                                    255,
-                                  ).withValues(alpha: 0.1),
-                                  child: const Icon(
-                                    Icons.image_not_supported,
-                                    color: const Color.fromARGB(
+                          child: AspectRatio(
+                            aspectRatio: 1440 / 960,
+                            child: Image.asset(
+                              widget.imagePaths[index],
+                              fit: BoxFit.cover,
+                              width:
+                                  isMobile
+                                      ? screenWidth * 0.85
+                                      : screenWidth * 0.7,
+                              errorBuilder:
+                                  (context, error, stackTrace) => Container(
+                                    width:
+                                        isMobile
+                                            ? screenWidth * 0.85
+                                            : screenWidth * 0.7,
+                                    height: double.infinity,
+                                    color: Color.fromARGB(
                                       255,
+                                      253,
+                                      254,
                                       255,
-                                      255,
-                                      255,
+                                    ).withValues(alpha: 0.1),
+                                    child: const Icon(
+                                      Icons.image_not_supported,
+                                      color: const Color.fromARGB(
+                                        255,
+                                        255,
+                                        255,
+                                        255,
+                                      ),
                                     ),
                                   ),
-                                ),
+                            ),
                           ),
                         ),
                       ),
@@ -843,36 +885,39 @@ class _ProjectImageCarouselMobileState
                           vertical: isMobile ? 4 : 8,
                         ),
                         child: Tilt(
-                          child: Image.asset(
-                            widget.imagePaths[index],
-                            fit: BoxFit.contain,
-                            height:
-                                isMobile
-                                    ? screenHeight * 0.4
-                                    : screenHeight * 0.8,
-                            errorBuilder:
-                                (context, error, stackTrace) => Container(
-                                  height:
-                                      isMobile
-                                          ? screenHeight * 0.4
-                                          : screenHeight * 0.8,
-                                  width: 200,
-                                  color: const Color.fromARGB(
-                                    255,
-                                    253,
-                                    254,
-                                    255,
-                                  ).withValues(alpha: 0.1),
-                                  child: const Icon(
-                                    Icons.image_not_supported,
-                                    color: const Color.fromARGB(
+                          child: AspectRatio(
+                            aspectRatio: 1440 / 960,
+                            child: Image.asset(
+                              widget.imagePaths[index],
+                              fit: BoxFit.cover,
+                              height:
+                                  isMobile
+                                      ? screenHeight * 0.4
+                                      : screenHeight * 0.8,
+                              errorBuilder:
+                                  (context, error, stackTrace) => Container(
+                                    height:
+                                        isMobile
+                                            ? screenHeight * 0.4
+                                            : screenHeight * 0.8,
+                                    width: double.infinity,
+                                    color: Color.fromARGB(
                                       255,
+                                      253,
+                                      254,
                                       255,
-                                      255,
-                                      255,
+                                    ).withValues(alpha: 0.1),
+                                    child: const Icon(
+                                      Icons.image_not_supported,
+                                      color: const Color.fromARGB(
+                                        255,
+                                        255,
+                                        255,
+                                        255,
+                                      ),
                                     ),
                                   ),
-                                ),
+                            ),
                           ),
                         ),
                       ),

@@ -30,8 +30,8 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
-  assets: 
-    - assets/icons/
+  assets:
     - assets/images/
     - assets/images/works/
+    - assets/icons/
   uses-material-design: true

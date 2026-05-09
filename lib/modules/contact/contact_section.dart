@@ -405,7 +405,7 @@ class _ContactSectionState extends State<ContactSection> {
             ],
           ),
         ),
-        const SizedBox(height: 60),
+        const SizedBox(height: 120),
       ],
     );
   }

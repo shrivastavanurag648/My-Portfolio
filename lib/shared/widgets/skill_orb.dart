@@ -55,9 +55,10 @@ class _SkillOrbState extends State<SkillOrb> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
+    return RepaintBoundary(
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _isHovered = true),
+        onExit: (_) => setState(() => _isHovered = false),
       child: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
@@ -123,6 +124,7 @@ class _SkillOrbState extends State<SkillOrb> with SingleTickerProviderStateMixin
             ),
           ),
         ),
+      ),
       ),
     );
   }
